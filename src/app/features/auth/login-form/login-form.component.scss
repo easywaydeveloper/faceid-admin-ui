@@ -1,0 +1,22 @@
+@import "~src/variables.scss";
+
+:host {
+  width: 480px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px 20px 20px;
+  background-color: $white;
+  border: 1px solid $gray8;
+  box-shadow: 0 4px 12px $gray7;
+}
+
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 5px;
+}
+

@@ -1,0 +1,33 @@
+@import "~src/variables";
+
+.toolbar {
+  background-color: $primary;
+
+  .header-container {
+    margin: 0 auto;
+    padding: 0;
+    width: 960px;
+    color: $gray9;
+    display: flex;
+    justify-content: space-between;
+
+    .nav-link {
+      color: $gray7;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      font-weight: normal;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.active {
+        color: $gray9;
+        height: 30px;
+        border-bottom: 2px solid $gray9;
+      }
+
+    }
+  }
+}

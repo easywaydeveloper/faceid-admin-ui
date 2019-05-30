@@ -1,0 +1,23 @@
+<h2>Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
+
+  <div class="inputs">
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput type="text" placeholder="Enter login" formControlName="username"/>
+      <mat-error>Username is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" placeholder="Enter password" formControlName="password"/>
+      <mat-error>Username is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <button mat-flat-button color="primary" type="submit">
+    <span *ngIf="true">Login</span>
+    <mat-progress-spinner *ngIf="false" mode="indeterminate" [diameter]="34" strokeWidth="3"></mat-progress-spinner>
+  </button>
+</form>
