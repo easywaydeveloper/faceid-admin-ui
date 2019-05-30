@@ -10,6 +10,7 @@
       "check-format",
       "allow-leading-underscore"
     ],
+    "no-string-literal": false,
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {

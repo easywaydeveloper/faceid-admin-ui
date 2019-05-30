@@ -11,8 +11,8 @@ const profilesRoutes: Route[] = [
     path: '',
     component: ProfilesManagerComponent,
     children: [
-      { path: 'profiles', component: ProfilesTableComponent },
-      { path: 'create-profile', component: CreateProfileComponent },
+      { path: 'profiles', component: ProfilesTableComponent, data: { animation: 'Profiles' } },
+      { path: 'create-profile', component: CreateProfileComponent, data: { animation: 'Create' } },
       { path: ':id', component: ProfileDetailsComponent },
       { path: ':id/edit', component: EditProfileComponent },
     ],
