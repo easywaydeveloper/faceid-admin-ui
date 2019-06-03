@@ -10,13 +10,13 @@ export interface ProfileSummary {
 export type ClientStatus = 'ACTIVE' | 'INACTIVE' | 'AUDIT';
 
 
-export interface ProfileDetails {
+export interface ProfileDetailsRS {
   id: number;
   name: string;
   lastName: string;
   login: string;
   email: string;
-  imageBase64: string;
+  imagePath: string;
   configRequest: {
     jobInterval: number;
     searchFaceDuration: number;

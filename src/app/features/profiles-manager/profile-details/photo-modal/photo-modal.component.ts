@@ -13,4 +13,8 @@ export class PhotoModalComponent {
   ) {
   }
 
+  close() {
+    this.dialogRef.close();
+  }
+
 }

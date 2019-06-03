@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfilesService } from 'src/app/features/profiles-manager/profiles.service';
-import { ProfileDetails } from 'src/app/interfaces';
-import { init } from 'protractor/built/launcher';
+import { ProfileDetailsRS } from 'src/app/interfaces';
 
 @Component({
   selector: 'user-profile',
@@ -10,7 +9,7 @@ import { init } from 'protractor/built/launcher';
   styleUrls: ['./user-profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  @Input() user: ProfileDetails;
+  @Input() user: ProfileDetailsRS;
 
   profileForm: FormGroup;
   selectedImageUrl: string;
@@ -28,7 +27,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit() {
     const initialValues = this.prepareInitialValues();
     this.profileForm = this.fb.group({
-      imageBase64: [initialValues.imageBase64, Validators.required],
+      imageBase64: [initialValues.imagePath, Validators.required],
       name: [initialValues.name, Validators.required],
       lastName: [initialValues.lastName, Validators.required],
       email: [initialValues.email, [Validators.required, Validators.email]],
@@ -39,7 +38,7 @@ export class UserProfileComponent implements OnInit {
         similarity: [initialValues.similarity, Validators.required],
       }),
     });
-    this.selectedImageUrl = initialValues.imageBase64;
+    this.selectedImageUrl = initialValues.imagePath;
   }
 
 
@@ -52,7 +51,9 @@ export class UserProfileComponent implements OnInit {
 
     fileReader.onloadend = () => {
       this.selectedImageUrl = fileReader.result as string;
-      this.profileForm.patchValue({ imageBase64: this.selectedImageUrl });
+      this.profileForm.patchValue({
+        imageBase64: this.selectedImageUrl.replace(/^data:.+base64,/g, ''),
+      });
     };
   }
 
@@ -70,7 +71,7 @@ export class UserProfileComponent implements OnInit {
 
   private prepareInitialValues() {
     let values = {
-      imageBase64: '',
+      imagePath: '',
       name: '',
       lastName: '',
       email: '',
@@ -81,10 +82,10 @@ export class UserProfileComponent implements OnInit {
     };
 
     if (this.user) {
-      const { imageBase64, name, lastName, email, login, configRequest } = this.user;
+      const { imagePath, name, lastName, email, login, configRequest } = this.user;
 
       values = {
-        imageBase64,
+        imagePath,
         name,
         lastName,
         email,

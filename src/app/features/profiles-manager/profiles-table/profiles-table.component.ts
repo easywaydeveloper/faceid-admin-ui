@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { LoadingService } from 'src/app/features/profiles-manager/loading.service';
 import { map, takeUntil } from 'rxjs/operators';
 import { Sort } from '@angular/material';
+import { defaultCompare } from 'src/app/features/profiles-manager/compare';
 
 @Component({
   selector: 'profiles-table',
@@ -48,15 +49,15 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'fullName':
-          return this.compare(a.fullName, b.fullName, isAsc);
+          return defaultCompare(a.fullName, b.fullName, isAsc);
         case 'login':
-          return this.compare(a.login, b.login, isAsc);
+          return defaultCompare(a.login, b.login, isAsc);
         case 'failureCount':
-          return this.compare(a.failureCount, b.failureCount, isAsc);
+          return defaultCompare(a.failureCount, b.failureCount, isAsc);
         case 'successCount':
-          return this.compare(a.successCount, b.successCount, isAsc);
+          return defaultCompare(a.successCount, b.successCount, isAsc);
         case 'clientStatus':
-          return this.compare(a.clientStatus, b.clientStatus, isAsc);
+          return defaultCompare(a.clientStatus, b.clientStatus, isAsc);
         default:
           return 0;
       }
@@ -68,8 +69,5 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
-  private compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
 }
 

@@ -10,7 +10,8 @@ import { transitionAnimation } from 'src/app/features/profiles-manager/router-an
 })
 export class ProfilesManagerComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

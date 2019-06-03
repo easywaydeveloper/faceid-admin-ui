@@ -1,0 +1,29 @@
+@import "~src/variables";
+
+::ng-deep {
+  .mat-dialog-container {
+    padding: 10px;
+    background-color: $gray5;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: flex-end;
+  color: $gray9;
+  padding-bottom: 10px;
+
+  .close {
+    cursor: pointer;
+
+    span {
+      vertical-align: super;
+      padding-right: 3px;
+    }
+  }
+}
+
+.image {
+  max-width: 100%;
+}
+

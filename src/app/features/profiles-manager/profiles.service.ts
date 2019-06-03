@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { ProfileDetails, ProfileSummary } from 'src/app/interfaces';
-import { delay } from 'rxjs/operators';
+import { Observable, /*of*/ } from 'rxjs';
+import { ProfileDetailsRS, ProfileSummary } from 'src/app/interfaces';
+// import { delay } from 'rxjs/operators';
+// import { PROFILE_DETAILS_COLLECTION_MOCK, PROFILES_RS_MOCK } from 'src/app/mocks/mocks';
 
 @Injectable()
 export class ProfilesService {
@@ -19,117 +20,15 @@ export class ProfilesService {
   }
 
   getProfiles(): Observable<ProfileSummary[]> {
-    // return this.http.get<Profile[]>(`${this.baseUrl}${this.configApiUrls.clients}`);
-    const rsMock: ProfileSummary[] = [
-      {
-        id: 1,
-        fullName: 'Dmitry Grishchenko',
-        login: 'dgry',
-        failureCount: 20,
-        successCount: 10,
-        clientStatus: 'ACTIVE',
-      },
-      {
-        id: 2,
-        fullName: 'Igor Jarko',
-        login: 'jar',
-        failureCount: 0,
-        successCount: 5,
-        clientStatus: 'AUDIT',
-      },
-      {
-        id: 3,
-        fullName: 'Petro Ivanov',
-        login: 'giro',
-        failureCount: 10,
-        successCount: 2,
-        clientStatus: 'INACTIVE',
-      },
-    ];
-
-    return of(rsMock.slice()).pipe(delay(500));
+    return this.http.get<ProfileSummary[]>(`${this.baseUrl}${this.configApiUrls.clients}`);
+    // return of(PROFILES_RS_MOCK.slice()).pipe(delay(500));
   }
 
-  getProfile(id: number): Observable<ProfileDetails> {
-    // return this.http.get<ProfileDetails>(`${this.baseUrl}${this.configApiUrls.clients}/${id}`);
-    const collection: ProfileDetails[] = [
-      {
-        id: 1,
-        name: 'Dmitry',
-        lastName: 'Grishchenko',
-        login: 'test',
-        email: 'test@test.com',
-        imageBase64: './assets/pitta.jpg',
-        configRequest: {
-          jobInterval: 3600,
-          searchFaceDuration: 20,
-          similarity: 0.8,
-        },
-        authAlerts: [
-          {
-            dateTime: '2012-02-03 12:56:34',
-            photoPath: './assets/pitta.jpg',
-            authStatus: 'FAILURE',
-            description: 'Some error happened',
-          },
-          {
-            dateTime: '2012-02-03 13:00:00',
-            photoPath: './assets/pitta.jpg',
-            authStatus: 'FAILURE',
-            description: 'Some error happened',
-          },
-          {
-            dateTime: '2012-02-03 13:01:00',
-            photoPath: './assets/pitta.jpg',
-            authStatus: 'FAILURE',
-            description: 'Some error happened',
-          },
-          {
-            dateTime: '2012-02-03 13:01:42',
-            photoPath: './assets/pitta.jpg',
-            authStatus: 'FAILURE',
-            description: 'Some error happened',
-          },
-          {
-            dateTime: '2012-02-04 13:02:00',
-            photoPath: './assets/pitta.jpg',
-            authStatus: 'FAILURE',
-            description: 'Some error happened',
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Igor',
-        lastName: 'Jarko',
-        login: 'test',
-        email: 'test@test.com',
-        imageBase64: './assets/kerala.jpg',
-        configRequest: {
-          jobInterval: 3600,
-          searchFaceDuration: 20,
-          similarity: 0.8,
-        },
-        authAlerts: [],
-      },
-      {
-        id: 3,
-        name: 'Petro',
-        lastName: 'Ivanov',
-        login: 'test',
-        email: 'test@test.com',
-        imageBase64: '',
-        configRequest: {
-          jobInterval: 3600,
-          searchFaceDuration: 20,
-          similarity: 0.8,
-        },
-        authAlerts: [],
-      },
-    ];
+  getProfile(id: number): Observable<ProfileDetailsRS> {
+    return this.http.get<ProfileDetailsRS>(`${this.baseUrl}${this.configApiUrls.clients}/${id}`);
 
-    const rsMock: ProfileDetails = collection.find((profile) => profile.id === id);
-    return of(rsMock).pipe(delay(1000));
+    // const rsMock: ProfileDetailsRS = PROFILE_DETAILS_COLLECTION_MOCK.find((profile) => profile.id === id);
+    // return of(rsMock).pipe(delay(1000));
   }
 
 }

@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProfileDetails } from 'src/app/interfaces';
+import { ProfileDetailsRS } from 'src/app/interfaces';
 import { map, takeUntil } from 'rxjs/operators';
 import { LoadingService } from 'src/app/features/profiles-manager/loading.service';
 import { Subject } from 'rxjs';
 import { MatDialog, Sort } from '@angular/material';
 import { PhotoModalComponent } from 'src/app/features/profiles-manager/profile-details/photo-modal/photo-modal.component';
+import { defaultCompare } from 'src/app/features/profiles-manager/compare';
 
 @Component({
   selector: 'profile-details',
@@ -13,7 +14,7 @@ import { PhotoModalComponent } from 'src/app/features/profiles-manager/profile-d
   styleUrls: ['./profile-details.component.scss'],
 })
 export class ProfileDetailsComponent implements OnInit, OnDestroy {
-  userDetails: ProfileDetails;
+  userDetails: ProfileDetailsRS;
   unsubscribe$: Subject<void> = new Subject();
   isLoading: boolean;
 
@@ -36,9 +37,9 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy {
   }
 
   openPhoto(event: MouseEvent): void {
-    console.log(event.target['src']);
     this.dialog.open(PhotoModalComponent, {
-      data: {src: event.target['src']}
+      maxWidth: '640px',
+      data: { src: event.target['src'] },
     });
   }
 
@@ -57,17 +58,13 @@ export class ProfileDetailsComponent implements OnInit, OnDestroy {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'dateTime':
-          return this.compare(a.dateTime, b.dateTime, isAsc);
+          return defaultCompare(a.dateTime, b.dateTime, isAsc);
         case 'authStatus':
-          return this.compare(a.authStatus, b.authStatus, isAsc);
+          return defaultCompare(a.authStatus, b.authStatus, isAsc);
         default:
           return 0;
       }
     });
-  }
-
-  private compare(a: number | string, b: number | string, isAsc: boolean) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
 }
