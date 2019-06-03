@@ -1,0 +1,76 @@
+<form [formGroup]="profileForm" class="container" (ngSubmit)=" onSubmit()" #formDir="ngForm">
+  <mat-card class="avatar" (click)="fileInput.click()">
+    <input class="image-input" type="file" (change)="onFileChanged($event)" #fileInput>
+    <span *ngIf="!selectedImageUrl" class="label" [ngClass]="{'label-error': !profileForm.valid && formDir.submitted}">
+      Upload image
+    </span>
+    <img *ngIf="selectedImageUrl" class="image" src="{{ selectedImageUrl }}" alt="avaImage">
+    <mat-error *ngIf="!profileForm.get('imageBase64').valid && formDir.submitted" class="error">
+      Image is required
+    </mat-error>
+  </mat-card>
+
+  <mat-card class="details">
+    <mat-card-header><h3>{{ title }} user data</h3></mat-card-header>
+
+    <mat-expansion-panel [expanded]="true" class="panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">User details</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="inputs">
+        <mat-form-field>
+          <input matInput placeholder="First name" formControlName="name">
+          <mat-error>First name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Last name" formControlName="lastName">
+          <mat-error>Last name is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Email address" formControlName="email">
+          <mat-error>Email address is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Login" formControlName="login">
+          <mat-error>Login is required</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="true" class="panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-title">Configuration</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div class="inputs" formGroupName="configRequest">
+        <mat-form-field>
+          <input matInput placeholder="Job interval" formControlName="jobInterval">
+          <mat-error>Job interval parameter is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Search face duration" formControlName="searchFaceDuration">
+          <mat-error>Search face duration parameter is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Similarity" formControlName="similarity">
+          <mat-error>Similarity parameter is required</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-expansion-panel>
+
+    <div class="actions">
+      <a *ngIf="user" mat-raised-button routerLink="/profiles/{{user.id}}" color="primary">Cancel</a>
+      <a *ngIf="user" mat-raised-button color="accent">Delete user</a>
+      <button color="{{ user ? 'accent' : 'primary' }}" mat-raised-button type="submit">
+        {{ user ? 'Update' : 'Create' }} user
+      </button>
+    </div>
+  </mat-card>
+
+</form>

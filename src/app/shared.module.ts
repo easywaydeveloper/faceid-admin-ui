@@ -13,9 +13,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -29,8 +36,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCheckboxModule,
     MatExpansionModule,
     MatToolbarModule,
+    MatDividerModule,
+    MatTableModule,
+    MatListModule,
+    MatSortModule,
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -44,6 +57,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatCheckboxModule,
     MatExpansionModule,
     MatToolbarModule,
+    MatDividerModule,
+    MatTableModule,
+    MatListModule,
+    MatSortModule,
   ],
 })
 export class SharedModule { }

@@ -1,3 +1,7 @@
-<p>
-  edit-profile works!
-</p>
+<mat-progress-spinner class="spinner" *ngIf="isLoading" color="primary" mode="indeterminate" [diameter]="120">
+</mat-progress-spinner>
+
+<mat-card *ngIf="!isLoading" class="container">
+  <mat-card-header><h2>Edit user profile</h2></mat-card-header>
+  <user-profile [user]="profileDetails"></user-profile>
+</mat-card>

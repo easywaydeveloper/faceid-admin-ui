@@ -1,3 +1,48 @@
-<p>
-  profiles-table works!
-</p>
+<mat-progress-spinner class="spinner" *ngIf="isLoading" color="primary" mode="indeterminate" [diameter]="120">
+</mat-progress-spinner>
+
+<mat-card *ngIf="!isLoading" class="container">
+  <mat-card-header>
+    <mat-card-title><h3>Profiles</h3></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <mat-card>
+      <mat-form-field class="search">
+        <mat-label>Search profile</mat-label>
+        <input matInput type="text" placeholder="type user name here" #searchString/>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+
+      <mat-progress-spinner class="spinner-content" *ngIf="contentLoading" color="primary" mode="indeterminate"
+        [diameter]="80">
+      </mat-progress-spinner>
+
+      <mat-list *ngIf="!contentLoading">
+
+        <mat-list-item matSort class="table-header" (matSortChange)="sortData($event)">
+          <div mat-sort-header="fullName" class="name">Full name</div>
+          <div mat-sort-header="login" class="login">Login</div>
+          <div mat-sort-header="failureCount" class="failures-count">Failures</div>
+          <div mat-sort-header="successCount" class="success-count">Success</div>
+          <div mat-sort-header="clientStatus" class="status">Status</div>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item *ngFor="let profile of clientProfiles | filterProfiles : searchString.value">
+
+          <ng-container *ngIf="profile !== -1">
+            <profile-item [profile]="profile"></profile-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+
+          <p *ngIf="profile === -1" class="no-results">No results found</p>
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
+  </mat-card-content>
+
+</mat-card>

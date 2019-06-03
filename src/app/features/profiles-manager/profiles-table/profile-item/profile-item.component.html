@@ -1,0 +1,9 @@
+<a class="item" [routerLink]="[profile.id]">
+  <div class="name">
+    <span>{{ profile.fullName }}</span>
+  </div>
+  <div class="login">{{ profile.login }}</div>
+  <div class="failures-count">{{ profile.failureCount }}</div>
+  <div class="success-count">{{ profile.successCount }}</div>
+  <div class="status">{{ profile.clientStatus }}</div>
+</a>

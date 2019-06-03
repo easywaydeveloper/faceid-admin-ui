@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 //@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "variables";
 
 
 body {
@@ -8,4 +9,13 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   font-style: normal;
   color: #111;
+  background-color: $gray9;
+
+  .sub-heading {
+    margin: 5px 0;
+  }
+
+  .spinner {
+    margin: 25% auto;
+  }
 }

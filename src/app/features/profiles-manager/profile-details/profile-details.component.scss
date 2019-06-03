@@ -1,0 +1,59 @@
+@import "~src/variables";
+
+.back-button {
+  margin: 10px 0;
+}
+
+.container {
+  background-color: $backgroud-violet;
+
+  .content {
+    display: flex;
+
+    .avatar {
+      @include avatar-image;
+    }
+
+    .details {
+      width: calc(100% - 256px);
+
+      mat-card-header {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .edit {
+        text-decoration: $primary;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .detail {
+        padding-top: 20px;
+        padding-left: 12px;
+        display: flex;
+        justify-content: space-between;
+        width: 65%;
+
+        .label {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .asserts {
+    display: block;
+    margin-top: 10px;
+  }
+
+
+  ::ng-deep mat-tab-header {
+    width: 70%;
+    border-radius: 4px;
+  }
+}
+

@@ -11,6 +11,22 @@
     display: flex;
     justify-content: space-between;
 
+
+    .logo-container {
+      display: flex;
+      flex-direction: row;
+
+      .logo {
+        width: 54px;
+        height: 57px;
+        padding-right: 10px;
+
+        &-text {
+          padding-top: 13px;
+        }
+      }
+    }
+
     .nav-link {
       color: $gray7;
       text-decoration: none;

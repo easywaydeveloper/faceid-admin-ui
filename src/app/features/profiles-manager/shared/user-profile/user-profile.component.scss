@@ -1,0 +1,59 @@
+@import "~src/variables";
+
+.container {
+  display: flex;
+}
+
+.avatar {
+  @include avatar-image;
+  flex-direction: column;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .label {
+    padding: 88px 20px;
+    border: 2px dashed $gray7;
+
+    &-error {
+      border: 2px dashed $error;
+    }
+  }
+
+  .image-input {
+    display: none;
+  }
+
+  .error {
+    padding-top: 5px;
+    font-size: 14px;
+  }
+}
+
+.details {
+  width: calc(100% - 256px);
+
+  .panel {
+    margin-bottom: 10px;
+
+    .panel-title {
+      font-weight: bold;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+
+    [mat-raised-button] {
+      margin-left: 10px;
+    }
+  }
+
+}

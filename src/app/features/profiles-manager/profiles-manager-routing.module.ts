@@ -5,16 +5,33 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { CreateProfileComponent } from 'src/app/features/profiles-manager/create-profile/create-profile.component';
 import { ProfilesManagerComponent } from 'src/app/features/profiles-manager/profiles-manager.component';
+import { ProfileDetailsResolverService } from 'src/app/features/profiles-manager/profile-details/profile-details-resolver.service';
 
 const profilesRoutes: Route[] = [
   {
     path: '',
     component: ProfilesManagerComponent,
     children: [
-      { path: 'profiles', component: ProfilesTableComponent, data: { animation: 'Profiles' } },
-      { path: 'create-profile', component: CreateProfileComponent, data: { animation: 'Create' } },
-      { path: ':id', component: ProfileDetailsComponent },
-      { path: ':id/edit', component: EditProfileComponent },
+      {
+        path: 'profiles',
+        component: ProfilesTableComponent,
+        data: { animation: 'Profiles' },
+      },
+      {
+        path: 'profiles/:id',
+        component: ProfileDetailsComponent,
+        resolve: { details: ProfileDetailsResolverService },
+      },
+      {
+        path: 'profiles/:id/edit',
+        component: EditProfileComponent,
+        resolve: { details: ProfileDetailsResolverService },
+      },
+      {
+        path: 'create-profile',
+        component: CreateProfileComponent,
+        data: { animation: 'Create' },
+      },
     ],
   },
 

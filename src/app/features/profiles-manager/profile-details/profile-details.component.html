@@ -1,3 +1,84 @@
-<p>
-  profile-details works!
-</p>
+<mat-progress-spinner class="spinner" *ngIf="isLoading" color="primary" mode="indeterminate" [diameter]="120">
+</mat-progress-spinner>
+
+<ng-container *ngIf="!isLoading">
+  <button class="back-button" mat-stroked-button color="primary" routerLink="/profiles">Back to list</button>
+
+  <mat-card class="container">
+    <mat-card-header>
+      <mat-card-title><h3>Profile Details</h3></mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="content">
+        <mat-card class="avatar">
+          <img class="image" src="{{ userDetails.imageBase64 }}">
+        </mat-card>
+
+        <mat-card class="details">
+          <mat-card-header>
+            <mat-card-title><h4 class="sub-heading">General</h4></mat-card-title>
+            <div class="sub-heading"><a class="edit" (click)="onEdit()">Edit</a></div>
+          </mat-card-header>
+
+          <mat-divider></mat-divider>
+
+          <mat-tab-group color="accent">
+            <mat-tab label="User details">
+              <div class="detail">
+                <div class="label">First name</div>
+                <div>{{ userDetails.name }}</div>
+              </div>
+
+              <div class="detail">
+                <div class="label">Last name</div>
+                <div>{{ userDetails.lastName }}</div>
+              </div>
+
+              <div class="detail">
+                <div class="label">Email address</div>
+                <div>{{ userDetails.email }}</div>
+              </div>
+
+              <div class="detail">
+                <div class="label">Login</div>
+                <div>{{ userDetails.login }}</div>
+              </div>
+            </mat-tab>
+
+            <mat-tab label="User configuration">
+              <div class="detail">
+                <div class="label">Job interval</div>
+                <div>{{ userDetails.configRequest.jobInterval }}</div>
+              </div>
+
+              <div class="detail">
+                <div class="label">Search face duration</div>
+                <div>{{ userDetails.configRequest.searchFaceDuration }}</div>
+              </div>
+
+              <div class="detail">
+                <div class="label">Similarity</div>
+                <div>{{ userDetails.configRequest.similarity }}</div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+
+
+        </mat-card>
+      </div>
+
+      <mat-card class="asserts">
+        <mat-card-header>
+          <mat-card-title><h4 class="sub-heading">Asserts</h4></mat-card-title>
+        </mat-card-header>
+
+        <!--<mat-divider></mat-divider>-->
+
+      </mat-card>
+
+    </mat-card-content>
+
+  </mat-card>
+</ng-container>
+

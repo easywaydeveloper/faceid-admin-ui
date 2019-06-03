@@ -1,0 +1,23 @@
+@import "~src/variables";
+
+.container {
+  background-color: $gray8;
+
+  .spinner-content {
+    margin: 20px auto;
+  }
+
+  .search {
+    width: 50%;
+    padding-left: 12px;
+  }
+
+  .table-header {
+    @include table;
+    font-weight: bold;
+  }
+
+  .no-results {
+    margin: 10px auto;
+  }
+}

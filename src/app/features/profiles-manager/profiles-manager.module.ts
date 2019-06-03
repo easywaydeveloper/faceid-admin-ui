@@ -9,6 +9,9 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared.module';
 import { RouterModule } from '@angular/router';
 import { PageHeaderComponent } from './page-header/page-header.component';
+import { UserProfileComponent } from './shared/user-profile/user-profile.component';
+import { ProfileItemComponent } from './profiles-table/profile-item/profile-item.component';
+import { FilterProfilesPipe } from './profiles-table/filter-profiles.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { PageHeaderComponent } from './page-header/page-header.component';
     CreateProfileComponent,
     EditProfileComponent,
     PageHeaderComponent,
+    UserProfileComponent,
+    ProfileItemComponent,
+    FilterProfilesPipe,
   ],
   imports: [
     CommonModule,

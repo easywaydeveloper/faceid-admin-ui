@@ -15,7 +15,7 @@ export class ProfilesManagerComponent implements OnInit {
   ngOnInit() {
   }
 
-  prepareRoute(outlet: RouterOutlet) {
+  prepareRouteTransition(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 

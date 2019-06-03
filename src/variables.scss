@@ -13,3 +13,44 @@ $white: #fff;
 $primary: #3f51b5;
 
 $light-pink: #ff4081;
+
+$error: #f44336;
+
+$backgroud-violet: #e5dbf9;
+$backgroud-light-blue: lightblue;
+
+@mixin table {
+  $wide-row: 18%;
+  $narrow-row: 12%;
+
+  .name {
+    width: calc(100% - (#{$wide-row} + #{$narrow-row} * 3));
+  }
+
+  .login {
+    width: $wide-row;
+  }
+
+  .failures-count,
+  .success-count,
+  .status {
+    width: $narrow-row;
+  }
+}
+
+@mixin avatar-image {
+  width: 210px;
+  height: 255px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4px;
+  padding: 5px;
+
+  .image {
+    max-width: 210px;
+    max-height: 255px;
+    width: auto;
+    height: auto;
+  }
+}
