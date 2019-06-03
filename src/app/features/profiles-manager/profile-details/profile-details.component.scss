@@ -37,6 +37,7 @@
         display: flex;
         justify-content: space-between;
         width: 65%;
+        line-height: 1.1;
 
         .label {
           font-weight: bold;
@@ -45,15 +46,43 @@
     }
   }
 
-  .asserts {
+  .alerts {
     display: block;
     margin-top: 10px;
+
+    .table-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      &-header {
+        height: 69px;
+        font-weight: bold;
+      }
+
+      div {
+        width: 25%;
+      }
+
+      .photo {
+        max-width: 56px;
+        max-height: 69px;
+        width: auto;
+        height: auto;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
   }
 
 
   ::ng-deep mat-tab-header {
     width: 70%;
-    border-radius: 4px;
   }
 }
 

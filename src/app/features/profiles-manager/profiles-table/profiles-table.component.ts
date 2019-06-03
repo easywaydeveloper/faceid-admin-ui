@@ -21,7 +21,6 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
   ) { }
 
   clientProfiles: ProfileSummary[];
-  sortedData: ProfileSummary[];
 
   ngOnInit() {
     this.contentLoading = true;
@@ -49,15 +48,15 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
         case 'fullName':
-          return compare(a.fullName, b.fullName, isAsc);
+          return this.compare(a.fullName, b.fullName, isAsc);
         case 'login':
-          return compare(a.login, b.login, isAsc);
+          return this.compare(a.login, b.login, isAsc);
         case 'failureCount':
-          return compare(a.failureCount, b.failureCount, isAsc);
+          return this.compare(a.failureCount, b.failureCount, isAsc);
         case 'successCount':
-          return compare(a.successCount, b.successCount, isAsc);
+          return this.compare(a.successCount, b.successCount, isAsc);
         case 'clientStatus':
-          return compare(a.clientStatus, b.clientStatus, isAsc);
+          return this.compare(a.clientStatus, b.clientStatus, isAsc);
         default:
           return 0;
       }
@@ -68,8 +67,9 @@ export class ProfilesTableComponent implements OnInit, OnDestroy {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
   }
+
+  private compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 }
 
-function compare(a: number | string, b: number | string, isAsc: boolean) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}

@@ -65,6 +65,38 @@ export class ProfilesService {
           searchFaceDuration: 20,
           similarity: 0.8,
         },
+        authAlerts: [
+          {
+            dateTime: '2012-02-03 12:56:34',
+            photoPath: './assets/pitta.jpg',
+            authStatus: 'FAILURE',
+            description: 'Some error happened',
+          },
+          {
+            dateTime: '2012-02-03 13:00:00',
+            photoPath: './assets/pitta.jpg',
+            authStatus: 'FAILURE',
+            description: 'Some error happened',
+          },
+          {
+            dateTime: '2012-02-03 13:01:00',
+            photoPath: './assets/pitta.jpg',
+            authStatus: 'FAILURE',
+            description: 'Some error happened',
+          },
+          {
+            dateTime: '2012-02-03 13:01:42',
+            photoPath: './assets/pitta.jpg',
+            authStatus: 'FAILURE',
+            description: 'Some error happened',
+          },
+          {
+            dateTime: '2012-02-04 13:02:00',
+            photoPath: './assets/pitta.jpg',
+            authStatus: 'FAILURE',
+            description: 'Some error happened',
+          },
+        ],
       },
       {
         id: 2,
@@ -78,6 +110,7 @@ export class ProfilesService {
           searchFaceDuration: 20,
           similarity: 0.8,
         },
+        authAlerts: [],
       },
       {
         id: 3,
@@ -91,10 +124,12 @@ export class ProfilesService {
           searchFaceDuration: 20,
           similarity: 0.8,
         },
+        authAlerts: [],
       },
     ];
 
     const rsMock: ProfileDetails = collection.find((profile) => profile.id === id);
     return of(rsMock).pipe(delay(1000));
   }
+
 }

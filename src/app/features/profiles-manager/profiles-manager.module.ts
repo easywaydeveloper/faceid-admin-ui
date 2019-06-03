@@ -12,6 +12,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 import { UserProfileComponent } from './shared/user-profile/user-profile.component';
 import { ProfileItemComponent } from './profiles-table/profile-item/profile-item.component';
 import { FilterProfilesPipe } from './profiles-table/filter-profiles.pipe';
+import { PhotoModalComponent } from './profile-details/photo-modal/photo-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FilterProfilesPipe } from './profiles-table/filter-profiles.pipe';
     UserProfileComponent,
     ProfileItemComponent,
     FilterProfilesPipe,
+    PhotoModalComponent,
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,9 @@ import { FilterProfilesPipe } from './profiles-table/filter-profiles.pipe';
     SharedModule,
     ProfilesManagerRoutingModule,
   ],
-  providers: [],
+  entryComponents: [
+    PhotoModalComponent,
+  ],
+  providers: []
 })
 export class ProfilesManagerModule { }

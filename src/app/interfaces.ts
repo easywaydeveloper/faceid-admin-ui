@@ -22,4 +22,12 @@ export interface ProfileDetails {
     searchFaceDuration: number;
     similarity: number;
   };
+  authAlerts: Alert[];
+}
+
+export interface Alert {
+  dateTime: string;
+  photoPath: string;
+  authStatus: string;
+  description: string;
 }

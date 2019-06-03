@@ -68,12 +68,35 @@
         </mat-card>
       </div>
 
-      <mat-card class="asserts">
+      <mat-card class="alerts">
         <mat-card-header>
-          <mat-card-title><h4 class="sub-heading">Asserts</h4></mat-card-title>
+          <mat-card-title><h4 class="sub-heading">Alerts</h4></mat-card-title>
         </mat-card-header>
 
-        <!--<mat-divider></mat-divider>-->
+        <mat-divider></mat-divider>
+
+        <div class="list">
+          <div class="table-row table-row-header" matSort (matSortChange)="sortData($event)">
+            <div>Photo</div>
+            <div mat-sort-header="dateTime">Date time</div>
+            <div mat-sort-header="authStatus">Auth status</div>
+            <div>Description</div>
+          </div>
+          <mat-divider></mat-divider>
+
+          <ng-container *ngFor="let alert of userDetails.authAlerts">
+            <div class="table-row">
+              <div><img class="photo" src="{{ alert.photoPath }}" (click)="openPhoto($event)" alt="photo"></div>
+              <div>{{alert.dateTime}}</div>
+              <div>{{alert.authStatus}}</div>
+              <div>{{alert.description}}</div>
+            </div>
+
+            <mat-divider></mat-divider>
+          </ng-container>
+
+        </div>
+
 
       </mat-card>
 
